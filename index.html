@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Belajar Data Primer & Sekunder</title>
+    <title>Belajar Interaksi Manusia & Komputer</title>
     <style>
         * {
             margin: 0;
@@ -12,7 +12,7 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: #333;
             overflow-x: hidden;
@@ -36,10 +36,7 @@
 
         h1 {
             font-size: 3em;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #667eea;
             margin-bottom: 20px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         }
@@ -66,7 +63,7 @@
         }
 
         .section:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
         }
 
@@ -83,107 +80,43 @@
             font-size: 1.2em;
         }
 
-        .data-types {
+        .cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
             margin-top: 30px;
         }
 
-        .data-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 35px;
-            border-radius: 20px;
-            color: white;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .data-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-        }
-
-        .data-card h3 {
-            font-size: 2em;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .data-card p {
-            font-size: 1.1em;
-            line-height: 1.8;
-            margin-bottom: 15px;
-        }
-
-        .data-card ul {
-            list-style: none;
-            padding-left: 0;
-            margin-top: 15px;
-        }
-
-        .data-card li {
-            padding: 10px 0;
-            padding-left: 30px;
-            position: relative;
-            font-size: 1.05em;
-        }
-
-        .data-card li:before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            font-weight: bold;
-            font-size: 1.3em;
-        }
-
-        .process-flow {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .process-step {
-            flex: 1;
-            min-width: 200px;
+        .card {
             background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
             padding: 30px;
             border-radius: 20px;
             text-align: center;
             color: white;
-            position: relative;
+            cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
-        .process-step:hover {
-            transform: scale(1.08);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        .card:hover {
+            transform: scale(1.08) rotate(2deg);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
         }
 
-        .process-step .step-number {
-            background: white;
-            color: #f5576c;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .card-icon {
+            font-size: 3.5em;
+            margin-bottom: 15px;
+            animation: pulse 2s infinite;
+        }
+
+        .card h3 {
             font-size: 1.5em;
-            font-weight: bold;
-            margin: 0 auto 15px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            margin-bottom: 12px;
         }
 
-        .process-step h4 {
-            font-size: 1.4em;
-            margin-bottom: 10px;
+        .card p {
+            font-size: 1em;
+            line-height: 1.6;
         }
 
         .interactive-demo {
@@ -191,124 +124,78 @@
             padding: 40px;
             border-radius: 25px;
             margin: 30px 0;
-        }
-
-        .demo-area {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            margin-top: 20px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .demo-input {
-            width: 100%;
-            padding: 15px;
-            font-size: 1.1em;
-            border: 3px solid #667eea;
-            border-radius: 10px;
-            margin-bottom: 15px;
-            font-family: inherit;
+            text-align: center;
         }
 
         .demo-button {
             background: #667eea;
             color: white;
             border: none;
-            padding: 15px 35px;
-            font-size: 1.2em;
+            padding: 20px 40px;
+            font-size: 1.3em;
             border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             font-family: inherit;
-            margin: 10px 5px;
+            margin: 10px;
         }
 
         .demo-button:hover {
             background: #764ba2;
-            transform: scale(1.05);
+            transform: scale(1.1);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
         }
 
         .demo-button:active {
-            transform: scale(0.98);
+            transform: scale(0.95);
         }
 
-        #result-area {
+        #demo-result {
             margin-top: 25px;
-            padding: 20px;
-            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-            border-radius: 15px;
-            min-height: 100px;
-            font-size: 1.1em;
-            line-height: 1.8;
-        }
-
-        .example-box {
-            background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
-            padding: 25px;
-            border-radius: 15px;
-            margin-top: 20px;
-            border-left: 5px solid #667eea;
-        }
-
-        .example-box h4 {
-            color: #764ba2;
             font-size: 1.5em;
+            font-weight: bold;
+            color: #764ba2;
+            min-height: 40px;
+        }
+
+        .fun-facts {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            padding: 30px;
+            border-radius: 20px;
+            margin-top: 20px;
+        }
+
+        .fun-facts h3 {
+            color: #667eea;
+            font-size: 1.8em;
             margin-bottom: 15px;
         }
 
-        .example-box p {
+        .fun-facts ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .fun-facts li {
+            padding: 12px 0;
             font-size: 1.1em;
-            line-height: 1.8;
-            color: #333;
+            border-bottom: 2px dashed #667eea;
         }
 
-        .tips-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 25px;
-        }
-
-        .tip-card {
-            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .tip-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        }
-
-        .tip-card h4 {
-            color: #667eea;
-            font-size: 1.3em;
-            margin-bottom: 10px;
+        .fun-facts li:before {
+            content: "🎯 ";
+            margin-right: 10px;
         }
 
         footer {
             text-align: center;
             padding: 40px;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.9);
             border-radius: 20px;
             margin-top: 40px;
             color: #667eea;
             font-size: 1.2em;
-        }
-
-        .school-info {
-            margin-top: 30px;
-            padding-top: 25px;
-            border-top: 3px dashed #667eea;
-        }
-
-        .school-info p {
-            margin: 8px 0;
         }
 
         @keyframes fadeIn {
@@ -321,175 +208,108 @@
             50% { transform: translateY(-20px); }
         }
 
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
         @media (max-width: 768px) {
             h1 { font-size: 2em; }
             .subtitle { font-size: 1em; }
             .section { padding: 25px; }
-            .data-types { grid-template-columns: 1fr; }
-            .process-flow { flex-direction: column; }
+            .cards { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <div class="hero-icons">📊📈📉💾</div>
-            <h1>Data Primer & Sekunder</h1>
-            <p class="subtitle">Yuk Belajar Cara Mengumpulkan, Mengolah, dan Menafsirkan Data!</p>
-            <p style="font-size: 1.1em; color: #764ba2; margin-top: 15px; font-weight: 600;">Simulasi untuk Belajar Siswa SMA Kelas XII</p>
+            <div class="hero-icons">💻👦👧🖱️</div>
+            <h1>Interaksi Manusia & Komputer</h1>
+            <p class="subtitle">Yuk Belajar Cara Kita Berkomunikasi dengan Komputer!</p>
         </header>
 
         <div class="section">
-            <h2><span class="icon">🎯</span> Apa Itu Data?</h2>
+            <h2><span class="icon">🤔</span> Apa Itu IMK?</h2>
             <p style="font-size: 1.2em; line-height: 1.8; color: #555;">
-                Data adalah kumpulan fakta, angka, atau informasi yang kita kumpulkan untuk dipelajari dan dianalisis. Data membantu kita membuat keputusan yang lebih baik, memahami pola, dan memecahkan masalah. Di era digital ini, data menjadi sangat penting dalam kehidupan sehari-hari!
+                Interaksi Manusia dan Komputer (IMK) adalah ilmu yang mempelajari bagaimana kita berkomunikasi dengan komputer, tablet, dan gadget lainnya. Sama seperti kita belajar cara berbicara dengan teman, kita juga perlu tahu cara "berbicara" dengan komputer agar lebih mudah dan menyenangkan!
             </p>
         </div>
 
         <div class="section">
-            <h2><span class="icon">📋</span> Jenis-Jenis Data</h2>
-            <div class="data-types">
-                <div class="data-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-                    <h3>📝 Data Primer</h3>
-                    <p><strong>Data yang dikumpulkan langsung dari sumbernya</strong></p>
-                    <p>Data primer adalah data asli yang kamu kumpulkan sendiri untuk tujuan penelitian tertentu.</p>
-                    <ul>
-                        <li>Wawancara langsung</li>
-                        <li>Survei/kuesioner</li>
-                        <li>Observasi/pengamatan</li>
-                        <li>Eksperimen</li>
-                        <li>Tes atau pengukuran</li>
-                    </ul>
-                    <div class="example-box" style="margin-top: 20px; background: rgba(255,255,255,0.2);">
-                        <h4 style="color: white;">Contoh:</h4>
-                        <p style="color: white;">Kamu melakukan survei ke 50 siswa tentang aplikasi belajar favorit mereka.</p>
-                    </div>
+            <h2><span class="icon">🎮</span> Cara Kita Berinteraksi dengan Komputer</h2>
+            <div class="cards">
+                <div class="card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                    <div class="card-icon">🖱️</div>
+                    <h3>Mouse</h3>
+                    <p>Klik, geser, dan arahkan untuk memilih apa yang kamu mau!</p>
                 </div>
-
-                <div class="data-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
-                    <h3>📚 Data Sekunder</h3>
-                    <p><strong>Data yang sudah dikumpulkan oleh orang lain</strong></p>
-                    <p>Data sekunder adalah data yang sudah ada dan dikumpulkan oleh pihak lain untuk tujuan berbeda.</p>
-                    <ul>
-                        <li>Buku dan jurnal</li>
-                        <li>Artikel berita</li>
-                        <li>Data BPS/pemerintah</li>
-                        <li>Laporan penelitian</li>
-                        <li>Database online</li>
-                    </ul>
-                    <div class="example-box" style="margin-top: 20px; background: rgba(255,255,255,0.2);">
-                        <h4 style="color: white;">Contoh:</h4>
-                        <p style="color: white;">Kamu menggunakan data jumlah pengguna internet di Indonesia dari laporan BPS.</p>
-                    </div>
+                <div class="card" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);">
+                    <div class="card-icon">⌨️</div>
+                    <h3>Keyboard</h3>
+                    <p>Ketik huruf, angka, dan perintah untuk berbicara dengan komputer!</p>
+                </div>
+                <div class="card" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+                    <div class="card-icon">👆</div>
+                    <h3>Touchscreen</h3>
+                    <p>Sentuh layar dengan jari untuk bermain dan belajar!</p>
+                </div>
+                <div class="card" style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);">
+                    <div class="card-icon">🎤</div>
+                    <h3>Suara</h3>
+                    <p>Bicara ke komputer dan komputer akan mendengarmu!</p>
                 </div>
             </div>
         </div>
 
         <div class="section">
-            <h2><span class="icon">⚙️</span> Proses Pengolahan Data</h2>
-            <p style="font-size: 1.1em; line-height: 1.8; color: #555; margin-bottom: 30px;">
-                Setelah data dikumpulkan, kita perlu mengolahnya agar bisa digunakan untuk membuat kesimpulan. Berikut adalah langkah-langkahnya:
-            </p>
-            <div class="process-flow">
-                <div class="process-step" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-                    <div class="step-number">1</div>
-                    <h4>Pengumpulan</h4>
-                    <p>Kumpulkan data dari sumber yang valid dan terpercaya</p>
-                </div>
-                <div class="process-step" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
-                    <div class="step-number">2</div>
-                    <h4>Pembersihan</h4>
-                    <p>Hapus data yang salah, duplikat, atau tidak lengkap</p>
-                </div>
-                <div class="process-step" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
-                    <div class="step-number">3</div>
-                    <h4>Pengorganisasian</h4>
-                    <p>Susun data dalam tabel, grafik, atau diagram</p>
-                </div>
-                <div class="process-step" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
-                    <div class="step-number">4</div>
-                    <h4>Analisis</h4>
-                    <p>Hitung rata-rata, persentase, dan temukan pola</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2><span class="icon">🔍</span> Penafsiran Data</h2>
-            <p style="font-size: 1.1em; line-height: 1.8; color: #555; margin-bottom: 25px;">
-                Penafsiran data adalah proses membaca dan memahami apa yang data katakan kepada kita. Ini seperti menerjemahkan bahasa angka menjadi informasi yang bermanfaat!
-            </p>
-            <div class="tips-grid">
-                <div class="tip-card">
-                    <h4>📊 Lihat Trennya</h4>
-                    <p>Apakah datanya naik, turun, atau tetap? Cari pola yang muncul dari waktu ke waktu.</p>
-                </div>
-                <div class="tip-card">
-                    <h4>🔢 Hitung Statistik</h4>
-                    <p>Gunakan rata-rata, median, modus untuk memahami data secara keseluruhan.</p>
-                </div>
-                <div class="tip-card">
-                    <h4>📈 Bandingkan</h4>
-                    <p>Bandingkan data dengan kelompok lain atau dengan waktu sebelumnya.</p>
-                </div>
-                <div class="tip-card">
-                    <h4>❓ Tanya "Mengapa?"</h4>
-                    <p>Cari tahu alasan di balik angka-angka tersebut.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2><span class="icon">🎮</span> Latihan Interaktif</h2>
+            <h2><span class="icon">✨</span> Coba Interaksi Sekarang!</h2>
             <div class="interactive-demo">
-                <h3 style="color: #764ba2; margin-bottom: 20px; font-size: 1.8em;">Simulasi Pengolahan Data</h3>
-                <p style="font-size: 1.1em; margin-bottom: 20px; color: #555;">Masukkan nilai-nilai (pisahkan dengan koma) dan lihat hasilnya!</p>
-                <div class="demo-area">
-                    <input type="text" id="dataInput" class="demo-input" placeholder="Contoh: 70, 80, 85, 90, 75, 88" value="70, 80, 85, 90, 75, 88">
-                    <div style="text-align: center;">
-                        <button class="demo-button" onclick="processData()">📊 Proses Data</button>
-                        <button class="demo-button" onclick="clearData()" style="background: #f5576c;">🗑️ Hapus</button>
-                    </div>
-                    <div id="result-area"></div>
-                </div>
+                <h3 style="color: #764ba2; margin-bottom: 25px; font-size: 1.8em;">Demo Interaktif</h3>
+                <p style="font-size: 1.2em; margin-bottom: 25px; color: #555;">Klik tombol-tombol di bawah ini dan lihat apa yang terjadi!</p>
+                <button class="demo-button" onclick="showMessage('Hore! 🎉 Kamu berhasil mengklik tombol!')">Klik Aku!</button>
+                <button class="demo-button" onclick="changeColor()" style="background: #f5576c;">Ubah Warna!</button>
+                <button class="demo-button" onclick="playSound()" style="background: #4facfe;">Bunyi!</button>
+                <div id="demo-result"></div>
             </div>
         </div>
 
         <div class="section">
-            <h2><span class="icon">💡</span> Tips Penting</h2>
-            <div class="example-box">
-                <h4>✅ Hal yang Harus Diperhatikan:</h4>
-                <p><strong>1. Validitas:</strong> Pastikan data yang dikumpulkan akurat dan benar</p>
-                <p><strong>2. Reliabilitas:</strong> Data harus konsisten jika diukur berulang kali</p>
-                <p><strong>3. Objektivitas:</strong> Jangan biarkan pendapat pribadi mempengaruhi data</p>
-                <p><strong>4. Etika:</strong> Hormati privasi dan jangan manipulasi data</p>
-                <p><strong>5. Dokumentasi:</strong> Catat dengan jelas dari mana data berasal</p>
+            <h2><span class="icon">📚</span> Mengapa IMK Penting?</h2>
+            <div class="fun-facts">
+                <h3>Fakta Menarik:</h3>
+                <ul>
+                    <li>IMK membuat aplikasi lebih mudah digunakan untuk semua orang</li>
+                    <li>Desainer game menggunakan IMK agar game lebih seru dan tidak membingungkan</li>
+                    <li>Website yang bagus dibuat dengan memikirkan IMK</li>
+                    <li>IMK membantu membuat teknologi yang bisa digunakan oleh anak-anak hingga kakek nenek</li>
+                    <li>Dengan IMK, kita bisa membuat robot yang lebih pintar!</li>
+                </ul>
             </div>
         </div>
 
         <div class="section">
-            <h2><span class="icon">🌟</span> Aplikasi Data dalam Kehidupan</h2>
-            <div class="tips-grid">
-                <div class="tip-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
-                    <h4 style="color: white;">🏥 Kesehatan</h4>
-                    <p>Melacak penyebaran penyakit, efektivitas vaksin, dan tren kesehatan masyarakat</p>
+            <h2><span class="icon">🎨</span> Prinsip Desain yang Baik</h2>
+            <div class="cards">
+                <div class="card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                    <div class="card-icon">👀</div>
+                    <h3>Mudah Dilihat</h3>
+                    <p>Tulisan dan gambar harus jelas dan tidak membingungkan mata</p>
                 </div>
-                <div class="tip-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white;">
-                    <h4 style="color: white;">📱 Teknologi</h4>
-                    <p>Menganalisis perilaku pengguna untuk meningkatkan aplikasi dan layanan</p>
+                <div class="card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                    <div class="card-icon">🎯</div>
+                    <h3>Mudah Dipahami</h3>
+                    <p>Setiap tombol dan menu harus mudah dimengerti</p>
                 </div>
-                <div class="tip-card" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: white;">
-                    <h4 style="color: white;">🏫 Pendidikan</h4>
-                    <p>Mengevaluasi metode pembelajaran dan meningkatkan hasil belajar siswa</p>
-                </div>
-                <div class="tip-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); color: white;">
-                    <h4 style="color: white;">🌍 Lingkungan</h4>
-                    <p>Memantau perubahan iklim dan kualitas udara untuk kebijakan lingkungan</p>
+                <div class="card" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                    <div class="card-icon">⚡</div>
+                    <h3>Cepat Merespon</h3>
+                    <p>Komputer harus cepat menanggapi apa yang kita lakukan</p>
                 </div>
             </div>
         </div>
 
-	<div class="section">
+<div class="section">
             <h2><span class="icon">📝</span> Survey Penggunaan Teknologi</h2>
             <div class="interactive-demo" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
                 <h3 style="color: #764ba2; margin-bottom: 20px; font-size: 1.8em;">Ikuti Survey Kami!</h3>
@@ -507,84 +327,66 @@
         </div>
 
         <footer>
-            <p>🌟 Data adalah Kunci untuk Memahami Dunia! 🌟</p>
-            <p style="margin-top: 15px; font-size: 0.9em;">Terus asah kemampuan analisis datamu untuk masa depan yang lebih cerah!</p>
-            <div class="school-info">
-                <p style="font-size: 1.1em; font-weight: bold; color: #764ba2;">📖 Bahan Ajar Informatika Kelas XII</p>
-                <p style="font-size: 1em; color: #667eea;">MA Plus Nurul Hadina, By Fauzan Reza, S.T</p>
+            <p>🌟 Terus Belajar dan Bereksperimen dengan Teknologi! 🌟</p>
+            <p style="margin-top: 15px; font-size: 0.9em;">Ingat: Setiap aplikasi dan game yang kamu gunakan dibuat dengan prinsip IMK!</p>
+            <div style="margin-top: 30px; padding-top: 25px; border-top: 3px dashed #667eea;">
+                <p style="font-size: 1.1em; font-weight: bold; color: #764ba2;">📖 Bahan Ajar Informatika Kelas X</p>
+                <p style="margin-top: 10px; font-size: 1em; color: #667eea;">MA Plus Nurul Hadina, By Fauzan Reza, S.T</p>
             </div>
         </footer>
     </div>
 
     <script>
-        function processData() {
-            const input = document.getElementById('dataInput').value;
-            const resultArea = document.getElementById('result-area');
-            
-            if (!input.trim()) {
-                resultArea.innerHTML = '<p style="color: #f5576c; font-weight: bold;">⚠️ Silakan masukkan data terlebih dahulu!</p>';
-                return;
-            }
-            
-            const numbers = input.split(',').map(num => parseFloat(num.trim())).filter(num => !isNaN(num));
-            
-            if (numbers.length === 0) {
-                resultArea.innerHTML = '<p style="color: #f5576c; font-weight: bold;">⚠️ Data tidak valid! Gunakan format angka yang dipisah koma.</p>';
-                return;
-            }
-            
-            const sum = numbers.reduce((a, b) => a + b, 0);
-            const average = (sum / numbers.length).toFixed(2);
-            const max = Math.max(...numbers);
-            const min = Math.min(...numbers);
-            
-            const sortedNumbers = [...numbers].sort((a, b) => a - b);
-            let median;
-            const mid = Math.floor(sortedNumbers.length / 2);
-            if (sortedNumbers.length % 2 === 0) {
-                median = ((sortedNumbers[mid - 1] + sortedNumbers[mid]) / 2).toFixed(2);
-            } else {
-                median = sortedNumbers[mid].toFixed(2);
-            }
-            
-            const range = (max - min).toFixed(2);
-            
-            resultArea.innerHTML = `
-                <h3 style="color: #764ba2; margin-bottom: 15px;">📊 Hasil Analisis Data:</h3>
-                <p><strong>📌 Data yang dimasukkan:</strong> ${numbers.join(', ')}</p>
-                <p><strong>🔢 Jumlah data:</strong> ${numbers.length} nilai</p>
-                <p><strong>➕ Total:</strong> ${sum.toFixed(2)}</p>
-                <p><strong>📊 Rata-rata (Mean):</strong> ${average}</p>
-                <p><strong>🔝 Nilai tertinggi (Maksimum):</strong> ${max}</p>
-                <p><strong>🔻 Nilai terendah (Minimum):</strong> ${min}</p>
-                <p><strong>📍 Nilai tengah (Median):</strong> ${median}</p>
-                <p><strong>📏 Rentang (Range):</strong> ${range}</p>
-                <div style="margin-top: 20px; padding: 15px; background: #667eea; color: white; border-radius: 10px;">
-                    <p><strong>💡 Interpretasi:</strong></p>
-                    <p>Dari ${numbers.length} data yang dianalisis, nilai rata-rata adalah ${average}. 
-                    Rentang nilai cukup ${parseFloat(range) > 20 ? 'lebar' : 'sempit'} dengan selisih ${range} 
-                    antara nilai tertinggi (${max}) dan terendah (${min}).</p>
-                </div>
-            `;
-            
-            resultArea.style.animation = 'none';
+        let colors = ['#667eea', '#764ba2', '#f5576c', '#4facfe', '#fa709a', '#30cfd0'];
+        let currentColorIndex = 0;
+
+        function showMessage(msg) {
+            const resultDiv = document.getElementById('demo-result');
+            resultDiv.textContent = msg;
+            resultDiv.style.animation = 'none';
             setTimeout(() => {
-                resultArea.style.animation = 'fadeIn 0.5s ease-in';
+                resultDiv.style.animation = 'fadeIn 0.5s ease-in';
             }, 10);
         }
-        
-        function clearData() {
-            document.getElementById('dataInput').value = '';
-            document.getElementById('result-area').innerHTML = '<p style="color: #999; text-align: center;">Data telah dihapus. Silakan masukkan data baru!</p>';
+
+        function changeColor() {
+            currentColorIndex = (currentColorIndex + 1) % colors.length;
+            document.body.style.background = `linear-gradient(135deg, ${colors[currentColorIndex]} 0%, ${colors[(currentColorIndex + 1) % colors.length]} 100%)`;
+            showMessage('Warna berubah! 🎨 Ini contoh interaksi visual!');
         }
 
-        document.getElementById('dataInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                processData();
-            }
+        function playSound() {
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.frequency.value = 523.25; // Note C
+            oscillator.type = 'sine';
+            
+            gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
+            
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 0.5);
+            
+            showMessage('Ting! 🔊 Ini contoh interaksi suara!');
+        }
+
+        // Add hover effect sound (optional, subtle)
+        document.querySelectorAll('.card, .demo-button').forEach(element => {
+            element.addEventListener('mouseenter', function() {
+                this.style.transition = 'all 0.3s ease';
+            });
         });
     </script>
 </body>
 </html>
 
+
+
+
+ 
 
